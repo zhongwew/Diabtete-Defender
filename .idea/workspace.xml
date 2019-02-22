@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6242c08-36e0-4889-a70e-486a94dbb22b" name="Default Changelist" comment="" />
+    <list default="true" id="d6242c08-36e0-4889-a70e-486a94dbb22b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/mobile/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
