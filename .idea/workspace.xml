@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6242c08-36e0-4889-a70e-486a94dbb22b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mobile/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,6 +14,7 @@
     <session id="-472381658">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -51,7 +51,9 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mobile/app/src/main/java/com/example/diabetedefender/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-405" />
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -111,29 +113,6 @@
             <path>
               <item name="Diabtete-Defender" type="b2602c69:ProjectViewProjectNode" />
               <item name="Diabtete-Defender" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Diabtete-Defender" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Diabtete-Defender" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Diabtete-Defender" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Diabtete-Defender" type="462c0819:PsiDirectoryNode" />
-              <item name="mobile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Diabtete-Defender" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Diabtete-Defender" type="462c0819:PsiDirectoryNode" />
-              <item name="mobile" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Diabtete-Defender" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Diabtete-Defender" type="462c0819:PsiDirectoryNode" />
-              <item name="mobile" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -229,7 +208,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mobile/app/src/main/java/com/example/diabetedefender/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-405" />
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
