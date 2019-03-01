@@ -7,7 +7,7 @@
     <string name="help_name">Help</string>
     <string name="settings_name">Settings</string>
     <string name="update_name">Update</string>
-
+    <string name="update">This is the Latest Version!</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -84,4 +84,5 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+
 </resources>
