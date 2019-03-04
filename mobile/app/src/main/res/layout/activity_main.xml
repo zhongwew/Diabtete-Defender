@@ -5,15 +5,17 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/fun">
+    android:background="@drawable/fun"
+    tools:context=".MainActivity">
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
-        android:layout_height="52dp"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="52dp">
 
     </include>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="0dp"
@@ -30,7 +32,7 @@
         android:id="@+id/navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/navigationGray"
+        android:background="@color/navigationColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

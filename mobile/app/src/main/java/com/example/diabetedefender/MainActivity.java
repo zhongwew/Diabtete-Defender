@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity implements
 
         Toolbar toolbar=(Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("UserName:XXX");
+        toolbar.setLogo(R.mipmap.for_fun);
+
+
 
     }
 
@@ -97,6 +101,9 @@ public class MainActivity extends AppCompatActivity implements
                 Intent update = new Intent(this,UpdateActivity.class);
                 startActivity(update);
                 break;
+
+            case R.id.search:
+                Toast.makeText(getApplicationContext(),"Search icon clicked",Toast.LENGTH_SHORT).show();
 
         }
 
