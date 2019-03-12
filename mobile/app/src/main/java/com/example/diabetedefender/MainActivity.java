@@ -1,117 +1,115 @@
 package com.example.diabetedefender;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.Window;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
-
-    private ViewPager myVPs;
-
-    private FragmentPagerAdapter fpAdapter;
-
-    private List<Fragment> pageFrags;
-
-    private BottomNavigationView navigation;
+import android.widget.Toast;
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+public class MainActivity extends AppCompatActivity implements
+        BottomNavigationView.OnNavigationItemSelectedListener{
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    myVPs.setCurrentItem(0);
-                    return true;
-                case R.id.navigation_dashboard:
-                    myVPs.setCurrentItem(1);
-                    return true;
-                case R.id.navigation_notifications:
-                    myVPs.setCurrentItem(2);
-                    return true;
-            }
-            return false;
+
+
+    private boolean loadFragment(Fragment fragment){
+        if(fragment !=null){
+             getSupportFragmentManager()
+                     .beginTransaction()
+                     .replace(R.id.fragment_container,fragment)
+                     .commit();
+             return true;
         }
-    };
-
-    private void initData(){
-        pageFrags = new ArrayList<>();
-        pageFrags.add(new Homepage());
-        pageFrags.add(new Recommpage());
-        pageFrags.add(new Myinfopage());
-
-        //init the adapter
-        fpAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int i) {
-                //return the fragment at corresponding position
-                return pageFrags.get(i);
-            }
-
-            @Override
-            public int getCount() {
-                return pageFrags.size();
-            }
-        };
-        //set the viewpager adapter
-        myVPs.setAdapter(fpAdapter);
-
-        //listen the view change of viewpager
-        myVPs.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
-
-            }
-
-            @Override
-            public void onPageSelected(int i) {
-                myVPs.setCurrentItem(i);
-                switch (i){
-                    case 0:
-                        navigation.setSelectedItemId(R.id.navigation_home);
-                        break;
-                    case 1:
-                        navigation.setSelectedItemId(R.id.navigation_dashboard);
-                        break;
-                    case 2:
-                        navigation.setSelectedItemId(R.id.navigation_notifications);
-                        break;
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
-
+        return false;
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myVPs = (ViewPager) findViewById(R.id.viewpager);
-        navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        initData();
+        BottomNavigationView navigation =  findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(this);
+
+        loadFragment(new HomeFragment());
+
+        Toolbar toolbar=(Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("UserName:XXX");
+        toolbar.setLogo(R.mipmap.for_fun);
+
+
 
     }
 
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        Fragment fragment=null;
+
+        switch (item.getItemId()){
+
+            case R.id.navigation_home:
+                fragment=new HomeFragment();
+                break;
+            case R.id.navigation_recommendation:
+                fragment=new RecommendationFragment();
+                break;
+            case R.id.navigation_my_info:
+                fragment=new MyInfoFragment();
+                break;
+
+        }
+        return loadFragment(fragment);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.mymenu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.help:
+
+                Intent help = new Intent(this,HelpActivity.class);
+                startActivity(help);
+
+                break;
+            case R.id.settings:
+
+
+                Intent settings = new Intent(this,SettingsActivity.class);
+                startActivity(settings);
+
+                break;
+            case R.id.update:
+                Toast.makeText(getApplicationContext(),"Latest Version Installed!",Toast.LENGTH_SHORT).show();
+                Intent update = new Intent(this,UpdateActivity.class);
+                startActivity(update);
+                break;
+
+            case R.id.search:
+                Toast.makeText(getApplicationContext(),"Search icon clicked",Toast.LENGTH_SHORT).show();
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
 }
