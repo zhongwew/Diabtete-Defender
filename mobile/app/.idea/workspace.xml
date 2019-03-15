@@ -51,7 +51,7 @@
         <counts>
           <entry key="gradle" value="10" />
           <entry key="java" value="137" />
-          <entry key="txt" value="31" />
+          <entry key="txt" value="34" />
           <entry key="xml" value="109" />
         </counts>
       </usages-collector>
@@ -59,7 +59,7 @@
         <counts>
           <entry key="Groovy" value="10" />
           <entry key="JAVA" value="137" />
-          <entry key="PLAIN_TEXT" value="31" />
+          <entry key="PLAIN_TEXT" value="34" />
           <entry key="XML" value="109" />
         </counts>
       </usages-collector>
@@ -109,8 +109,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/diabetedefender/Tab2Fragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="269">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -396,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552687422430</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="push2.0">
+      <created>1552687804259</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1552687804259</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -459,7 +466,8 @@
     <MESSAGE value="222222222" />
     <MESSAGE value="meeeeer" />
     <MESSAGE value="push1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="push1.0" />
+    <MESSAGE value="push2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="push2.0" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/marker_view.xml">
@@ -577,8 +585,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/diabetedefender/Tab2Fragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="269">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
