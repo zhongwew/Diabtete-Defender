@@ -225,10 +225,10 @@ public class Tab1Fragment extends Fragment {
 
         private TextView tvContent;
 
-
         public MyMarkerView(Context context, int layoutResource) {
             super(context, layoutResource);
             tvContent = (TextView) findViewById(R.id.tvContent);
+
 
         }
 
@@ -236,6 +236,7 @@ public class Tab1Fragment extends Fragment {
         public void refreshContent(Entry e, Highlight highlight) {
             int n = (int) e.getVal();
             tvContent.setText(n + "");
+
             // if (e instanceof CandleEntry) {
             // CandleEntry ce = (CandleEntry) e;
             // tvContent.setText(""
