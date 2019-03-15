@@ -9,7 +9,7 @@ public class app_global {
     static final String host_url = "http://localhost:8080";
 
 
-    static String sendGet(String parm) throws IOException {
+    public static String sendGet(String parm) throws IOException {
         URL obj = new URL(host_url+parm);
         HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
 
@@ -37,6 +37,8 @@ public class app_global {
     }
 
     static String sendPost(String parm){
+        StringBuilder retStr = new StringBuilder();
 
+        return retStr.toString();
     }
 }
