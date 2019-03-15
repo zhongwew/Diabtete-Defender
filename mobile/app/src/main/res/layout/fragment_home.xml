@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="52dp"
-        android:background="#C6E0A8"
+        android:background="#63B8FF"
         app:tabIndicatorColor="#C72C20"
         app:tabTextColor="#8F8888">
 
@@ -25,16 +25,5 @@
         android:layout_height="match_parent"
         />
 
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:text="HOME"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 </RelativeLayout>

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
+
+
 public class Tab1Fragment extends Fragment {
 
 
@@ -40,16 +43,13 @@ public class Tab1Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_tab1,container, false);
-
-
         LineChart chart = (LineChart) view.findViewById(R.id.chart);
 
         // 弹出的数据点提示框。
-        //MarkerView mv = new MyMarkerView(this, R.layout.marker_view);
+        MarkerView mv = new MyMarkerView(getActivity(), R.layout.marker_view);
 
-        //chart.setMarkerView(mv);
+        chart.setMarkerView(mv);
 
         // 制作7个数据点（沿x坐标轴）
         LineData mLineData = makeLineData(24);
@@ -109,7 +109,7 @@ public class Tab1Fragment extends Fragment {
         // 如果mLineChart.setDrawGridBackground(false)，
         // 那么mLineChart.setGridBackgroundColor(Color.CYAN)将失效;
         mLineChart.setDrawGridBackground(false);
-        mLineChart.setGridBackgroundColor(Color.CYAN);
+        mLineChart.setGridBackgroundColor(0X7363B8FF);
 
         // 触摸
         mLineChart.setTouchEnabled(true);
@@ -136,7 +136,7 @@ public class Tab1Fragment extends Fragment {
         mLegend.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
         mLegend.setForm(Legend.LegendForm.LINE);
         mLegend.setFormSize(10.0f);
-        mLegend.setTextColor(0xFFDC143C);
+        mLegend.setTextColor(Color.GRAY);
         mLegend.setEnabled(true);
 
         mLineChart.animateX(2000);
@@ -167,8 +167,8 @@ public class Tab1Fragment extends Fragment {
         // 用y轴的集合来设置参数
         mLineDataSet.setLineWidth(4.0f);
         mLineDataSet.setCircleSize(5.0f);
-        mLineDataSet.setColor(0XFFA020F0);
-        mLineDataSet.setCircleColor(0XFFA020F0);
+        mLineDataSet.setColor(0XFF4169E1);
+        mLineDataSet.setCircleColor(0XFF4169E1);
 
         // 设置mLineDataSet.setDrawHighlightIndicators(false)后，
         // Highlight的十字交叉的纵横线将不会显示，
@@ -189,7 +189,7 @@ public class Tab1Fragment extends Fragment {
         // 填充曲线下方的区域，红色，半透明。
         mLineDataSet.setDrawFilled(true);
         mLineDataSet.setFillAlpha(20);
-        mLineDataSet.setFillColor(0xFFCD00CD);
+        mLineDataSet.setFillColor(0xFF4169E1);
 
         // 填充折线上数据点、圆球里面包裹的中心空白处的颜色。
         mLineDataSet.setCircleColorHole(Color.WHITE);
