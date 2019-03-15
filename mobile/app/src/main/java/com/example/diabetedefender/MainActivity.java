@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements
         toolbar.setLogo(R.mipmap.for_fun);
 
 
-
     }
 
 
