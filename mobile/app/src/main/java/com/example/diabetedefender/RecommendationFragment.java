@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 public class RecommendationFragment extends Fragment {
 
+    final boolean ifMock = true;
+
     @NonNull
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
