@@ -2,6 +2,7 @@ package com.example.diabetedefender;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.os.Handler;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -24,9 +26,15 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.highlight.Highlight;
 
-import java.util.ArrayList;
-import java.util.Random;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import global.app_global;
 
 
 
@@ -34,25 +42,39 @@ public class Tab1Fragment extends Fragment {
 
 
 
-
-    private final int Y_BASE = 3;
     private final String DATA_SET_LABEL = "Real-time Glucose Level";
 
+    private LineData mLineData;
+    LineChart chart;
+
+
+    float cur_glu = 0;
+    Handler mainHand;
+    Timer timer;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tab1,container, false);
-        LineChart chart = (LineChart) view.findViewById(R.id.chart);
+        chart = (LineChart) view.findViewById(R.id.chart);
+        TextView text = (TextView)view.findViewById(R.id.glucoseview);
+        text.setText(Float.toString(cur_glu));
 
         // 弹出的数据点提示框。
         MarkerView mv = new MyMarkerView(getActivity(), R.layout.marker_view);
 
         chart.setMarkerView(mv);
 
-        // 制作7个数据点（沿x坐标轴）
-        LineData mLineData = makeLineData(24);
+        mainHand = new Handler();
+
+        try{
+            mLineData = makeLineData(24);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
 
         // 把X坐标轴放置到底部。默认的是在顶部。
         XAxis xAxis = chart.getXAxis();
@@ -75,8 +97,38 @@ public class Tab1Fragment extends Fragment {
         leftYAxis.setDrawLabels(false);
 
         leftYAxis.setGridColor(Color.LTGRAY);
-
         setChartStyle(chart, mLineData, Color.WHITE);
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+
+                Runnable run = new Runnable() {
+                    @Override
+                    public void run() {
+                        View view = getView();
+                        if(view != null){
+                            TextView text = (TextView)view.findViewById(R.id.glucoseview);
+                            text.setText(Float.toString(cur_glu));
+                        }
+                        else
+                            timer.cancel();
+                        chart.setData(mLineData);
+                        setChartStyle(chart, mLineData, Color.WHITE);
+                    }
+                };
+                try {
+                    System.out.println("running");
+                    mLineData = makeLineData(24);
+                }
+                catch (Exception e){
+                    System.out.println(e);
+                }
+                mainHand.post(run);
+            }
+        };
+        timer = new Timer();
+        timer.schedule(task,5000, 10000);
 
 
 
@@ -84,15 +136,14 @@ public class Tab1Fragment extends Fragment {
         return   view;
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
 
-
-
     }
+
+
 
     // 设置显示的样式
     private void setChartStyle(LineChart mLineChart, LineData lineData,
@@ -146,20 +197,25 @@ public class Tab1Fragment extends Fragment {
      * @param count 数据量，多少个数据。
      * @return
      */
-    private LineData makeLineData(int count) {
+    ArrayList<Entry> y;
+    private LineData makeLineData(int count) throws IOException, JSONException{
         ArrayList<String> x = new ArrayList<String>();
         for (int i = 0; i < count; i++) {
             // x轴显示的数据
-            x.add("8:" + i * 5);
+            x.add(Integer.toString(1+i)+":00");
         }
 
         // y轴的数据
-        ArrayList<Entry> y = new ArrayList<Entry>();
-        for (int i = 0; i < count; i++) {
-            int num = (int) (Math.random() * 10) + Y_BASE;
-            Entry entry = new Entry(num, i);
-            y.add(entry);
-        }
+//        ArrayList<Entry> y = new ArrayList<Entry>();
+//        for (int i = 0; i < count; i++) {
+//            int num = 20 + Y_BASE;
+//            Entry entry = new Entry(num, i);
+//            y.add(entry);
+//        }
+        if(y == null)
+            y = new ArrayList<>();
+        else
+            y.add(new Entry(getCurrentLevel(), y.size()));
 
         // y轴数据集
         LineDataSet mLineDataSet = new LineDataSet(y, DATA_SET_LABEL);
@@ -216,6 +272,15 @@ public class Tab1Fragment extends Fragment {
         return mLineData;
     }
 
+    float getCurrentLevel() throws IOException, JSONException {
+        String parm = "/sugar";
+        String res = app_global.sendGet(parm);
+        JSONObject js = new JSONObject(res);
+        System.out.println(js.getString("level"));
+        cur_glu = Float.parseFloat(js.getString("level"));
+        return Float.parseFloat(js.getString("level"));
+    }
+
     /**
      * @author Phil
      * <p>
@@ -225,17 +290,16 @@ public class Tab1Fragment extends Fragment {
 
         private TextView tvContent;
 
-
         public MyMarkerView(Context context, int layoutResource) {
             super(context, layoutResource);
             tvContent = (TextView) findViewById(R.id.tvContent);
-
         }
 
         @Override
         public void refreshContent(Entry e, Highlight highlight) {
             int n = (int) e.getVal();
             tvContent.setText(n + "");
+
             // if (e instanceof CandleEntry) {
             // CandleEntry ce = (CandleEntry) e;
             // tvContent.setText(""

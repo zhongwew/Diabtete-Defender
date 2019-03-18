@@ -20,14 +20,19 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements
         BottomNavigationView.OnNavigationItemSelectedListener{
 
+    static Fragment home;
+    static Fragment recom;
+    static Fragment info;
+
 
     private boolean loadFragment(Fragment fragment){
         if(fragment !=null){
              getSupportFragmentManager()
-                     .beginTransaction()
-                     .replace(R.id.fragment_container,fragment)
-                     .commit();
-             return true;
+                    .beginTransaction()
+                    .replace(R.id.fragment_container,fragment)
+                     .addToBackStack(null)
+                    .commit();
+            return true;
         }
         return false;
     }
@@ -41,17 +46,15 @@ public class MainActivity extends AppCompatActivity implements
         BottomNavigationView navigation =  findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
 
-
-
-
-
-        loadFragment(new HomeFragment());
+        home = new HomeFragment();
+        recom = new RecommendationFragment();
+        info = new MyInfoFragment();
+        loadFragment(home);
 
         Toolbar toolbar=(Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("UserName:XXX");
         toolbar.setLogo(R.mipmap.for_fun);
-
 
     }
 
@@ -60,17 +63,18 @@ public class MainActivity extends AppCompatActivity implements
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         Fragment fragment=null;
+        System.out.println("changing fragment");
 
         switch (item.getItemId()){
 
             case R.id.navigation_home:
-                fragment=new HomeFragment();
+                fragment = home;
                 break;
             case R.id.navigation_recommendation:
-                fragment=new RecommendationFragment();
+                fragment = recom;
                 break;
             case R.id.navigation_my_info:
-                fragment=new MyInfoFragment();
+                fragment = info;
                 break;
 
         }

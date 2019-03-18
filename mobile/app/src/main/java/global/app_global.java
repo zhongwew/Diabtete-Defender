@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.net.*;
 
 public class app_global {
-    static final String host_url = "http://localhost:8080";
+    static final String host_url = "http://10.0.2.2:5000";
 
 
     public static String sendGet(String parm) throws IOException {
@@ -38,6 +38,7 @@ public class app_global {
 
     static String sendPost(String parm){
         StringBuilder retStr = new StringBuilder();
+
 
         return retStr.toString();
     }
